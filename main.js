@@ -7,19 +7,19 @@ function calNear(a) {
       for (var i = input; i > 0; i--) {
         var storage2 = 0;
         if (i == 2 || i == 3 || i == 5 || i == 7) {
-          console.log("This is Prime");
-          console.log(i);
-          console.log("---------");
+          // console.log("This is Prime");
+          // console.log(i);
+          // console.log("---------");
           storage2 = i;
           break;
         } else if (i % 2 == 0 || i % 3 == 0 || i % 5 == 0 || i % 7 == 0) {
-          console.log("This is Composite numbers");
-          console.log(i);
-          console.log("---------");
+          // console.log("This is Composite numbers");
+          // console.log(i);
+          // console.log("---------");
         } else {
-          console.log("This is Prime");
-          console.log(i);
-          console.log("---------");
+          // console.log("This is Prime");
+          // console.log(i);
+          // console.log("---------");
           storage2 = i;
           break;
         }
@@ -28,19 +28,19 @@ function calNear(a) {
       for (var i = input; ; i++) {
         var storage1 = 0;
         if (i == 2 || i == 3 || i == 5 || i == 7) {
-          console.log("This is Prime");
-          console.log(i);
-          console.log("---------");
+          // console.log("This is Prime");
+          // console.log(i);
+          // console.log("---------");
           storage1 = i;
           break;
         } else if (i % 2 == 0 || i % 3 == 0 || i % 5 == 0 || i % 7 == 0) {
-          console.log("This is Composite numbers");
-          console.log(i);
-          console.log("---------");
+          // console.log("This is Composite numbers");
+          // console.log(i);
+          // console.log("---------");
         } else {
-          console.log("This is Prime");
-          console.log(i);
-          console.log("---------");
+          // console.log("This is Prime");
+          // console.log(i);
+          // console.log("---------");
           storage1 = i;
           break;
         }
@@ -75,3 +75,59 @@ function calNear(a) {
   }
 }
 /******************************************************************************************************/
+
+function calCount(a){
+  const inputCal = `${a}`;
+  if(typeof a == "number"){
+    if(Number.isInteger(a) == true){
+      console.log(`Đây là số nguyên, số nguyên có trong phần tử này là ${inputCal.length}`)
+    } else {
+      const posDot = inputCal.indexOf(`.`);
+      const integer = ``;
+      const decimal = ``;
+      const countBefore = 0;
+      const countAfter = 0;
+      if(inputCal.lastIndexOf(`0`) == inputCal.length - 1){
+        inputCal.pop();
+      }
+      for(const i = posDot - 1; i >= 0;i--){
+        console.log(inputCal[i]);
+        integer += inputCal[i];
+        countBefore += 1;
+      } 
+      for(const i = posDot + 1; i < inputCal.length; i++){
+        console.log(inputCal[i]);
+        decimal += inputCal[i];
+        countAfter += 1;
+      }
+        const changeToReserve = integer.split("");
+        const reserve = changeToReserve.reverse();
+        const changeAgain = reserve.toString();  
+      console.log(`Integer in array: ${changeAgain.replaceAll(",", "")}`);
+      console.log(`Decimal in array: ${decimal}`);
+      console.log(`Số nguyên trong phần tử là ${countBefore}, số thập phân là ${countAfter}`);
+    }
+  } else alert("This isn't a number")
+}
+
+/***************************************************************************************/ 
+
+function findRealNum (a){
+  var input = `${a}`;
+  var posDot = input.indexOf(`.`)
+  var countForInte = 0;
+  var space = `0.`;
+if(typeof a == "number"){
+    for(var i = posDot - 2;i >= 0; i--){
+      countForInte += 1;
+      space += 0;
+      console.log(space);
+    }
+    space += 1;
+    console.log(space);
+    var resultBe = a + parseFloat(space);
+    var resultAf = a - parseFloat(space);
+    console.log(`Số liền sau của ${a}: ${resultAf}`);
+    console.log(`Số liền trước của ${a}: ${resultBe}`);
+} else alert("This isn't a number!!")
+}
