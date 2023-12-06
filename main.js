@@ -77,25 +77,25 @@ function calNear(a) {
 /******************************************************************************************************/
 
 function calCount(a){
-  const inputCal = `${a}`;
+  let inputCal = `${a}`;
   if(typeof a == "number"){
     if(Number.isInteger(a) == true){
       console.log(`Đây là số nguyên, số nguyên có trong phần tử này là ${inputCal.length}`)
     } else {
       const posDot = inputCal.indexOf(`.`);
-      const integer = ``;
-      const decimal = ``;
-      const countBefore = 0;
-      const countAfter = 0;
+      let integer = ``;
+      let decimal = ``;
+      let countBefore = 0;
+      let countAfter = 0;
       if(inputCal.lastIndexOf(`0`) == inputCal.length - 1){
         inputCal.pop();
       }
-      for(const i = posDot - 1; i >= 0;i--){
+      for(let i = posDot - 1; i >= 0;i--){
         console.log(inputCal[i]);
         integer += inputCal[i];
         countBefore += 1;
       } 
-      for(const i = posDot + 1; i < inputCal.length; i++){
+      for(let i = posDot + 1; i < inputCal.length; i++){
         console.log(inputCal[i]);
         decimal += inputCal[i];
         countAfter += 1;
@@ -113,21 +113,50 @@ function calCount(a){
 /***************************************************************************************/ 
 
 function findRealNum (a){
-  var input = `${a}`;
-  var posDot = input.indexOf(`.`)
-  var countForInte = 0;
-  var space = `0.`;
+  let input = `${a}`;
+  const posDot = input.indexOf(`.`)
+  let countForInte = 0;
+  let space = `0.`;
+  let countForCheck = 0;
 if(typeof a == "number"){
     for(var i = posDot - 2;i >= 0; i--){
       countForInte += 1;
       space += 0;
       console.log(space);
     }
+    for(var j = posDot + 1;j <= input.length - 1;j++){
+      countForCheck += 1;
+    }
+    // console.log(countForCheck);
+    // console.log(countForInte);
     space += 1;
     console.log(space);
-    var resultBe = a + parseFloat(space);
-    var resultAf = a - parseFloat(space);
-    console.log(`Số liền sau của ${a}: ${resultAf}`);
-    console.log(`Số liền trước của ${a}: ${resultBe}`);
+    let resultBe = a + parseFloat(space);
+    let resultAf = a - parseFloat(space);
+    
+    // if (`${resultAf}`.charAt(countForInte*2 + 1) > input.charAt(countForInte*2 + 1)){
+    //   // resultAf -= space;
+    //   console.log(`Số sau${`${resultAf}`.charAt(countForInte*2 + 1)}`);
+    //   console.log(`Số gốc ${input.charAt(countForInte*2 + 1)}`);
+    //   console.log(`Số liền sau của ${a}: ${resultAf}`);
+    //   console.log("Kết quả lớn hơn");
+    // }
+    // if (`${resultBe}`.charAt(countForInte*2 + 1) > input.charAt(countForInte*2 + 1)){
+    //   // resultBe -= space;
+    //   console.log(`Số trước ${`${resultBe}`.charAt(countForInte*2 + 1)}`);
+    //   console.log(`Số gốc ${input.charAt(countForInte*2 + 1)}`);
+    //   console.log(`Số liền trước của ${a}: ${resultBe}`);
+    //   console.log("Kết quả lớn hơn");
+    // }
+    const changeResultBe = `${resultBe}`.split()
+    const changeResultAf = `${resultAf}`.split()
+    const u = changeResultAf.slice(0, (countForInte + 1)*2 + 1);
+    const o = changeResultBe.slice(0, (countForInte + 1)*2 + 1);
+    const changeAgAf = u.toString();
+    const changeAgBe = o.toString();
+    console.log(`Số liền sau của ${a}: ${parseFloat(changeAgAf).toFixed(countForInte + 1)}`);
+    console.log(`Số liền trước của ${a}: ${parseFloat(changeAgBe).toFixed(countForInte + 1)}`);
+
+    // console.log(input);
 } else alert("This isn't a number!!")
 }
